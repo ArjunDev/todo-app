@@ -8,8 +8,16 @@ window.onload = function(){
 }
 
 document.querySelector('.add-btn').addEventListener('click', () => {
+  
   const item = document.querySelector('.input-area');
-  createItem(item);  //create item
+  /*
+  if(item.value == ""){
+    alert(`Don't be lazy! type something before click on Add button.`);
+  } else {
+    createItem(item);  //create item
+  }
+  */
+  createItem(item)
 });
 
 //create itemsArray in localstorage
@@ -23,17 +31,56 @@ function createItem(item){
 function displayItems(){
   let items = "";
   for(let i=0; i<itemsArray.length; i++){
-    items += `<div class="todo-list"><textarea class="todo-text" disabled>${itemsArray[i]}</textarea>
-    <div class="todo-icons">
-      <i class="fa-solid fa-check check-mark-btn"></i>
-      <i class="fa-solid fa-pen-to-square edit-btn"></i>
-      <i class="fa-solid fa-trash delete-btn"></i>
-    </div></div>`;
+    items += `<div class="todo-list">
+                <div class="todo-item">
+                  <textarea class="todo-text" disabled>${itemsArray[i]}</textarea>
+                  <div class="todo-icons">
+                    <i class="fa-solid fa-check check-mark-btn"></i>
+                    <i class="fa-solid fa-pen-to-square edit-btn"></i>
+                    <i class="fa-solid fa-trash delete-btn"></i>
+                  </div>
+                </div>
+                <div class="save-cancle-box">
+                  <button class="save-btn">Save</button>
+                </div>
+              </div>`;
   }
-  document.querySelector('.todo-div').innerHTML = items;
+  document.querySelector('.bottom-container').innerHTML = items;
   activateDeleteListeners();
   activateEditListeners();
   activateCheckMarkListeners();
+  activateSaveBtnListenrs();
+}
+
+function activateEditListeners(){
+  const editBtns = document.querySelectorAll('.edit-btn');
+  const textArea = document.querySelectorAll('.todo-text');
+  const saveCancleDiv = document.querySelectorAll('.save-cancle-box');
+  editBtns.forEach((eb, index) => {
+    eb.addEventListener('click', () => {
+      textArea[index].disabled = false;
+      textArea[index].focus();
+      saveCancleDiv[index].style.display = "inline-block";
+      //console.log(saveCancleDiv);
+    });
+  });
+}
+
+function activateSaveBtnListenrs(){
+  const saveBtn = document.querySelectorAll('.save-btn');
+  const textArea = document.querySelectorAll('.todo-text');
+  saveBtn.forEach((sb, index) => {
+    sb.addEventListener('click', () => {
+      saveItem(textArea[index].value, index);
+    });
+  });
+}
+
+function saveItem(text, index){
+  itemsArray[index] = text;
+  localStorage.setItem('items', JSON.stringify(itemsArray));
+  location.reload();
+  console.log(itemsArray);
 }
 
 function activateDeleteListeners(){
@@ -48,26 +95,18 @@ function deleteItem(index){
   localStorage.setItem('items', JSON.stringify(itemsArray));
   location.reload();
 }
-
-function activateEditListeners(){
-  const editBtns = document.querySelectorAll('.edit-btn');
-  const textArea = document.querySelectorAll('.todo-text');
-  editBtns.forEach((eb, index) => {
-    eb.addEventListener('click', () => {
-      textArea[index].disabled = false;
-      textArea[index].focus();
-    });
-  });
-}
-
 function activateCheckMarkListeners(){
   const markBtns = document.querySelectorAll('.check-mark-btn');
-  const todoDiv = document.querySelectorAll('.todo-list');
+  const todoItem = document.querySelectorAll('.todo-item');
   markBtns.forEach((mb, index) => {
     mb.addEventListener('click', () =>{
-      todoDiv[index].classList.toggle('completed');
+      todoItem[index].classList.toggle('completed');
+      //console.log(todoList[index]);
+      //activeCompletedItemListeners(todoList[index]);
     });
   });
 }
+function activeCompletedItemListeners(item){
+  console.log(item);
 
-
+}
