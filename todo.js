@@ -4,8 +4,14 @@ const itemsArray = localStorage.getItem('items') ? JSON.parse(localStorage.getIt
 //check to see if anything exist in localstorage, else create empty completed items array
 const completedItemsArray = localStorage.getItem('completedItems') ? JSON.parse(localStorage.getItem('completedItems')) : [];
 
-console.log(itemsArray);
-console.log(completedItemsArray);
+//to check if completedItemsArray has any items
+if(completedItemsArray.length > 0){
+  const completedItems = document.querySelector('.completed-items');
+  console.log(completedItems);
+  completedItems.classList.remove('hide');
+}
+//console.log(itemsArray);
+//console.log(completedItemsArray);
 
 window.onload = function(){
   displayItems();
@@ -15,14 +21,12 @@ window.onload = function(){
 document.querySelector('.add-btn').addEventListener('click', () => {
   
   const item = document.querySelector('.input-area');
-  /*
   if(item.value == ""){
     alert(`Don't be lazy! type something before click on Add button.`);
   } else {
     createItem(item);  //create item
   }
-  */
-  createItem(item);
+  //createItem(item);
 });
 
 //create itemsArray in localstorage

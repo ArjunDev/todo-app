@@ -47,7 +47,6 @@ body{
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  position: relative;
 }
 .bottom-container{
   display: flex;
@@ -57,10 +56,11 @@ body{
 
 }
 .completed-items{
-  align-content: flex-start;
-  justify-items: flex-start;
   margin-top: 1rem;
   margin-bottom: 0.5rem;
+}
+.completed-items.hide{
+  display: none;
 }
 .todo-list{
   width: 85vw;
