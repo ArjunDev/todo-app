@@ -22,7 +22,7 @@ document.querySelector('.add-btn').addEventListener('click', () => {
   
   const item = document.querySelector('.input-area');
   if(item.value == ""){
-    alert(`Don't be lazy! type something before click on Add button.`);
+    alert(`Must enter something before click on Add button.`);
   } else {
     createItem(item);  //create item
   }
@@ -112,7 +112,7 @@ function activateCheckMarkListeners(){
     mb.addEventListener('click', () =>{
       todoItem[index].classList.toggle('completed');
       activeCompletedItemListeners(todoItem[index]);// calling f
-      deleteItem(); 
+      deleteItem(index); 
       //when click check mark, calling this f to delete that item
       location.reload();
     });
@@ -135,14 +135,12 @@ function createCompletedItem(item){
 function displayComletedItems(){
   let completeditems = "";
   for(let i=0; i<completedItemsArray.length; i++){
-    completeditems += `<div class="todo-list">
-                <div class="todo-item completed">
+    completeditems += `<div class="todo-item completed">
                   <textarea class="todo-text" disabled>${completedItemsArray[i]}</textarea>
                   <div class="completed-todo-icon">
                     <i class="fa-solid fa-trash completed-delete-btn"></i>
                   </div>
-                </div>
-              </div>`;
+                </div>`;
   }
   //console.log(completeditems);
   //console.log(document.querySelector('.completeditem-container'));
