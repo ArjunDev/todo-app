@@ -3,9 +3,11 @@
   box-sizing: border-box;
   margin: 0;
 }
+h2{
+  color: rgba(255, 255, 255, 0.8);
+}
 body{
-  background: rgb(195,182,34);
-  background: linear-gradient(0deg, rgba(195,182,34,1) 43%, rgba(253,250,45,1) 72%);
+  background: rgba(93, 8, 130, 0.9);
   min-height: 100vh;
 }
 .top-container {
@@ -27,14 +29,14 @@ body{
   border: none;
   border-radius: 0.5rem;
   padding-left: 10px;
-  background-color: rgba(255, 255, 255, 0.95);
+  background-color: rgba(255, 255, 255, 0.85);
 }
 .add-btn {
   width: 20%;
   height: 2rem;
   margin-left: 5px;
   border-radius: 0.5rem;
-  color: white;
+  color: rgba(255, 255, 255, 0.9);
   background-color: rgba(26, 24, 24, 0.95);
   cursor: pointer;
   font-weight: bold;
@@ -59,6 +61,7 @@ body{
 .completed-items{
   margin-top: 1rem;
   margin-bottom: 0.5rem;
+  color: rgba(176, 210, 166, 0.973);
 }
 .completed-items.hide{
   display: none;
@@ -75,7 +78,7 @@ body{
   align-items: center;
   justify-content: space-between; 
   /* Push text and icons to opposite ends */
-  background-color: rgba(255, 255, 255, 0.95);
+  background-color: rgba(255, 255, 255, 0.85);
   overflow: hidden;
   border-radius: 0.5rem 0.5rem 0.5rem 0rem;
 }
@@ -98,6 +101,7 @@ body{
   border-radius: 0.5rem 0rem 0rem 0.5rem;
   font-family: sans-serif;
   padding-left: 5px;
+  font-weight: 550;
 }
 .todo-text:focus {
   border-color: #007BFF;
@@ -121,7 +125,7 @@ body{
   overflow: hidden;
   height: 100%;
   width: 24%;
-  background-color: rgba(26, 24, 24, 0.65);
+  background-color: rgba(177, 171, 14, 0.9);
   border-radius: 0rem 0.5rem 0.5rem 0rem;
 }
 .completed-todo-icon{
@@ -135,20 +139,21 @@ body{
 .save-btn{
   color: black;
   font-size: medium;
+  font-weight: 600;
   border-radius: 0.5rem;
   font-weight: medium;
   padding: 0.5rem 0.75rem;
   margin: 0.25rem;
   border: none;
-  background-color: rgba(26, 24, 24, 0.6);
+  background-color: rgba(177, 171, 14, 0.9);
 }
 .save-btn:hover{
   cursor: pointer;
-  background-color: rgba(26, 24, 24, 0.6);
+  background-color: rgba(127, 123, 4, 0.9);
 }
 .save-btn:active {
   cursor: pointer;
-  background-color: rgba(3, 245, 11, 0.8);
+  background-color: rgba(3, 204, 10, 0.8);
   transform: scale(0.9);
 }
 .edit-btn, 
@@ -157,7 +162,7 @@ body{
 .completed-delete-btn {
   color: black;
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 1.25rem;
   border-radius: 0.5rem;
   padding-top: 1rem;
   padding-bottom: 1rem;

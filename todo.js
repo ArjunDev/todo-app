@@ -7,7 +7,7 @@ const completedItemsArray = localStorage.getItem('completedItems') ? JSON.parse(
 //to check if completedItemsArray has any items
 if(completedItemsArray.length > 0){
   const completedItems = document.querySelector('.completed-items');
-  console.log(completedItems);
+  //console.log(completedItems);
   completedItems.classList.remove('hide');
 }
 //console.log(itemsArray);
@@ -90,7 +90,6 @@ function saveItem(text, index){
   itemsArray[index] = text;
   localStorage.setItem('items', JSON.stringify(itemsArray));
   location.reload();
-  console.log(itemsArray);
 }
 
 function activateDeleteListeners(){
